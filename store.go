@@ -29,7 +29,7 @@ func mkdirStore() string {
 	for _, e := range env {
 		if strings.HasPrefix(e, "HOME=") {
 			dir = strings.SplitN(e, "=", 2)[1]
-			dir = path.Join(dir, ".taipeitorrent")
+			dir = path.Join(dir, ".dgit_dht_cache")
 		}
 	}
 	// Ignore errors.
@@ -71,7 +71,7 @@ func saveStore(s dhtStore) {
 	if s.path == "" {
 		return
 	}
-	tmp, err := ioutil.TempFile(s.path, "taipeitorrent")
+	tmp, err := ioutil.TempFile(s.path, "dgit_dht_cache")
 	if err != nil {
 		log.Println("saveStore tempfile:", err)
 		return
